@@ -18,7 +18,7 @@ A simple text to speech Discord bot using the [Jungle Horse API](http://jungle.h
 3. Copy your bot's secret token and [paste it on this line](https://github.com/MysteryPancake/Discord-Trump/blob/master/trump.js#L8).
 4. Go to `https://discordapp.com/oauth2/authorize?client_id=<CLIENT_ID>&scope=bot`, with `<CLIENT_ID>` as your app's client ID.
 5. [Install node.js](https://nodejs.org/en/download).
-6. [Install discord.js](https://github.com/hydrabolt/discord.js): `npm install discord.js`
+6. [Install discord.js](https://github.com/hydrabolt/discord.js): `npm install discord.js node-opus`
 7. [Run the bot](https://github.com/MysteryPancake/Discord-Trump/blob/master/trump.js): `npm start`
 8. Join the voice channel you want Trump to join, and say `/join`.
 9. You won't regret it, believe me!
