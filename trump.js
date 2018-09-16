@@ -27,9 +27,8 @@ client.on("message", function(message) {
 	} else if (message.content === "/leave") {
 		const connection = message.guild.voiceConnection;
 		if (connection) {
-			connection.disconnect().then(function() {
-				client.user.setActivity(client.voiceConnections.size + " Trump" + (client.voiceConnections.size === 1 ? "" : "s")).catch(console.error);
-			});
+			connection.disconnect();
+			client.user.setActivity(client.voiceConnections.size + " Trump" + (client.voiceConnections.size === 1 ? "" : "s")).catch(console.error);
 		}
 	} else {
 		const connection = message.guild.voiceConnection;
