@@ -1,7 +1,7 @@
 {
   "name": "Discord-Trump",
   "version": "1.0.0",
-  "description": "A simple text to speech Discord bot.",
+  "description": "Simple text to speech Discord bot.",
   "main": "trump.js",
   "engines": {
     "node": "10.x",
