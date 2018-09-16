@@ -30,7 +30,7 @@ client.on("message", function(message) {
 			connection.disconnect();
 			client.user.setActivity(client.voiceConnections.size + " Trump" + (client.voiceConnections.size === 1 ? "" : "s")).catch(console.error);
 		}
-	} else {
+	} else if (message.content) {
 		const connection = message.guild.voiceConnection;
 		if (connection) {
 			console.log("Playing " + message.content + "!");
