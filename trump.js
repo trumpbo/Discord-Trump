@@ -14,7 +14,8 @@ client.on("ready", function() {
 
 client.on("message", function(message) {
 	if (message.author.bot || !message.guild) return;
-	if (message.content === "/join") {
+	const content = message.content.toLowerCase();
+	if (content === "/join") {
 		if (message.member.voiceChannel) {
 			message.member.voiceChannel.join().then(function() {
 				client.user.setActivity(client.voiceConnections.size + " Trump" + (client.voiceConnections.size === 1 ? "" : "s")).catch(console.error);
@@ -24,17 +25,17 @@ client.on("message", function(message) {
 		} else {
 			message.channel.send("Join a voice channel! You won't regret it, believe me.").catch(console.error);
 		}
-	} else if (message.content === "/leave") {
+	} else if (content === "/leave") {
 		const connection = message.guild.voiceConnection;
 		if (connection) {
 			connection.disconnect();
 			client.user.setActivity(client.voiceConnections.size + " Trump" + (client.voiceConnections.size === 1 ? "" : "s")).catch(console.error);
 		}
-	} else if (message.content) {
+	} else if (content) {
 		const connection = message.guild.voiceConnection;
 		if (connection) {
-			console.log("Playing " + message.content + "!");
-			connection.playArbitraryInput("async:http://api.jungle.horse/speak?v=trump&vol=3&s=" + encodeURIComponent(message.content));
+			console.log("Playing " + content + "!");
+			connection.playArbitraryInput("async:http://api.jungle.horse/speak?v=trump&vol=3&s=" + encodeURIComponent(content));
 		}
 	}
 });
