@@ -5,7 +5,7 @@ console.log("LOADING LIBRARIES...");
 const Discord = require("discord.js");
 const client = new Discord.Client();
 
-client.login("<SECRET_BOT_TOKEN>");
+client.login("<SECRET_BOT_TOKEN>").catch(console.error);
 
 client.on("ready", function() {
 	client.user.setActivity(client.voiceConnections.size + " Trump" + (client.voiceConnections.size === 1 ? "" : "s")).catch(console.error);
