@@ -21,7 +21,7 @@ Speaks every message sent on the server.
 4. Go to `https://discordapp.com/oauth2/authorize?client_id=<CLIENT_ID>&scope=bot`, with `<CLIENT_ID>` as your app's client ID.
 5. [Install node.js](https://nodejs.org/en/download): `brew install node`
 6. [Install FFmpeg](https://www.ffmpeg.org/download.html): `brew install ffmpeg`
-7. [Install discord.js](https://github.com/hydrabolt/discord.js): `npm install discord.js node-opus`
+7. [Install the dependencies](https://github.com/MysteryPancake/Discord-Trump/blob/master/package.json#L37-L40): `npm install`
 8. [Run the bot](https://github.com/MysteryPancake/Discord-Trump/blob/master/trump.js): `npm start`
 9. Join the voice channel you want Trump to join, and say `/join`.
 10. You won't regret it, believe me!
