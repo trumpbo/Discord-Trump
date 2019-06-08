@@ -1,7 +1,5 @@
 # [Discord Trump](https://discordapp.com/oauth2/authorize?client_id=484622857041608705&scope=bot)
-A simple text to speech Discord bot using the [Jungle Horse API](http://jungle.horse).
-
-Heroku doesn't like this bot, but sometimes it works properly.
+Text to speech Discord bot using the [Jungle Horse API](http://jungle.horse).
 
 ## Commands
 ### Join
