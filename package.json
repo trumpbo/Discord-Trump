@@ -1,7 +1,7 @@
 {
   "name": "Discord-Trump",
   "version": "1.0.0",
-  "description": "Simple text to speech Discord bot.",
+  "description": "Text to speech Discord bot using the Jungle Horse API.",
   "main": "trump.js",
   "engines": {
     "node": "10.x",
@@ -29,12 +29,13 @@
     "trump",
     "donald",
     "tts",
-    "text-to-speech"
+    "text-to-speech",
+    "nodejs-bot"
   ],
   "author": "MysteryPancake",
   "license": "MIT",
   "dependencies": {
-    "discord.js": "^11.4.2",
-    "node-opus": "^0.3.0"
+    "discord.js": "github:discordjs/discord.js",
+    "node-opus": "^0.3.2"
   }
 }

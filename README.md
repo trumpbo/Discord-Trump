@@ -1,6 +1,8 @@
 # [Discord Trump](https://discordapp.com/oauth2/authorize?client_id=484622857041608705&scope=bot)
 Text to speech Discord bot using the [Jungle Horse API](http://jungle.horse).
 
+Speaks every message sent on the server.
+
 ## Commands
 ### Join
 *Joins the voice channel you are currently in.*
