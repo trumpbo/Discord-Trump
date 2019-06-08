@@ -5,14 +5,14 @@ Speaks every message sent on the server.
 
 ## Commands
 ### Join
-*Joins the voice channel you are currently in.*
-
 `/join`
 
-### Leave
-*Leaves the voice channel.*
+*Joins the voice channel you are currently in.*
 
+### Leave
 `/leave`
+
+*Leaves the voice channel.*
 
 ## Setup
 1. [Create your app with a Bot](https://discordapp.com/developers/applications/me).
