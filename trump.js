@@ -24,7 +24,7 @@ client.on("ready", function() {
 client.on("message", function(message) {
 	if (message.author.bot || !message.guild) return;
 	const content = message.content.toLowerCase();
-	if (content === "/join") {
+	if (content === "trump_join") {
 		if (message.member.voice && message.member.voice.channel) {
 			message.member.voice.channel.join().then(function() {
 				updateStatus();
@@ -32,19 +32,26 @@ client.on("message", function(message) {
 				message.channel.send("I need permission to join your voice channel! Believe me, it's true.").catch(console.error);
 			});
 		} else {
-			message.channel.send("Join a voice channel! You won't regret it, believe me.").catch(console.error);
+			message.channel.send("Join a voice channel first! You won't regret it, believe me.").catch(console.error);
 		}
-	} else if (content === "/leave") {
+	} else if (content === "trump_leave") {
 		const connection = message.guild.voice && message.guild.voice.connection;
 		if (connection) {
 			connection.disconnect();
 			updateStatus();
 		}
-	} else if (content) {
+	} else if (content.startsWith("trump_say")) {
 		const connection = message.guild.voice && message.guild.voice.connection;
 		if (connection) {
-			console.log("Playing " + content + "!");
-			connection.play("http://api.jungle.horse/speak?v=trump&vol=3&s=" + encodeURIComponent(content));
+			const utterance = message.content.slice(9).trim();
+			if (utterance) {
+				console.log("Playing " + utterance + "!");
+				connection.play("http://api.jungle.horse/speak?v=trump&vol=3&s=" + encodeURIComponent(utterance));
+			} else {
+				message.channel.send("Give me something to say!").catch(console.error);
+			}
+		} else {
+			message.channel.send("I need to be in a voice channel first! Add me with `trump_join`.").catch(console.error);
 		}
 	}
 });
