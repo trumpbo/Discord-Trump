@@ -2,6 +2,9 @@
 
 console.log("LOADING LIBRARIES...");
 
+const request = require("request");
+const fs = require("fs");
+
 const Discord = require("discord.js");
 const client = new Discord.Client();
 
@@ -49,7 +52,21 @@ client.on("message", function(message) {
 			if (connection) {
 				connection.play(url);
 			} else {
-				message.channel.send({ files: [url] }).catch(console.error);
+				request.get(url, function(error) {
+					if (error) {
+						console.error(error);
+						fs.unlinkSync(utterance);
+					} else {
+						message.channel.send({
+							files: [{
+								attachment: utterance,
+								name: utterance + ".wav"
+							}]
+						}).then(function() {
+							fs.unlinkSync(utterance);
+						}).catch(console.error);
+					}
+				}).pipe(fs.createWriteStream(utterance));
 			}
 		} else {
 			message.channel.send("Give me something to say!").catch(console.error);
