@@ -41,17 +41,18 @@ client.on("message", function(message) {
 			updateStatus();
 		}
 	} else if (content.startsWith("trump_say")) {
-		const connection = message.guild.voice && message.guild.voice.connection;
-		if (connection) {
-			const utterance = message.content.slice(9).trim();
-			if (utterance) {
-				console.log("Playing " + utterance + "!");
-				connection.play("http://api.jungle.horse/speak?v=trump&vol=3&s=" + encodeURIComponent(utterance));
+		const utterance = message.content.slice(9).trim();
+		if (utterance) {
+			console.log("Playing " + utterance + "!");
+			const url = "http://api.jungle.horse/speak?v=trump&vol=3&s=" + encodeURIComponent(utterance);
+			const connection = message.guild.voice && message.guild.voice.connection;
+			if (connection) {
+				connection.play(url);
 			} else {
-				message.channel.send("Give me something to say!").catch(console.error);
+				message.channel.send({ files: [url] }).catch(console.error);
 			}
 		} else {
-			message.channel.send("I need to be in a voice channel first! Add me with `trump_join`.").catch(console.error);
+			message.channel.send("Give me something to say!").catch(console.error);
 		}
 	}
 });
