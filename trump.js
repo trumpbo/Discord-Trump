@@ -3,6 +3,7 @@
 console.log("LOADING LIBRARIES...");
 
 const request = require("request");
+const crypto = require("crypto");
 const fs = require("fs");
 
 const Discord = require("discord.js");
@@ -52,21 +53,25 @@ client.on("message", function(message) {
 			if (connection) {
 				connection.play(url);
 			} else {
-				request.get(url, function(error) {
+				const fileName = crypto.randomBytes(48).toString("hex") + ".wav";
+				request.get(url, function(error, response, body) {
 					if (error) {
 						console.error(error);
-						fs.unlinkSync(utterance);
+						fs.unlinkSync(fileName);
+					} else if (response.statusCode !== 200) {
+						message.channel.send(body).catch(console.error);
+						fs.unlinkSync(fileName);
 					} else {
 						message.channel.send({
 							files: [{
-								attachment: utterance,
-								name: utterance + ".wav"
+								attachment: fileName,
+								name: utterance.replace(/[^a-z0-9]/gi, "_") + ".wav"
 							}]
 						}).then(function() {
-							fs.unlinkSync(utterance);
+							fs.unlinkSync(fileName);
 						}).catch(console.error);
 					}
-				}).pipe(fs.createWriteStream(utterance));
+				}).pipe(fs.createWriteStream(fileName));
 			}
 		} else {
 			message.channel.send("Give me something to say!").catch(console.error);
