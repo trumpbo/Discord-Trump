@@ -17,7 +17,7 @@ Text to speech Discord bot using the [Jungle Horse API](http://jungle.horse).
 
 *Makes Trump say anything you want.*
 
-*If the bot is in a voice channel, the speech will play through the channel.*
+*If the bot is in a voice channel, the speech will play through this channel.*
 
 *If not, the speech will be sent as an attachment.*
 
