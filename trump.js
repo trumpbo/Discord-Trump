@@ -30,9 +30,7 @@ client.on("message", function(message) {
 	const content = message.content.toLowerCase();
 	if (content === "trump_join") {
 		if (message.member.voice && message.member.voice.channel) {
-			message.member.voice.channel.join().then(function() {
-				updateStatus();
-			}).catch(function() {
+			message.member.voice.channel.join().then(updateStatus).catch(function() {
 				message.channel.send("I need permission to join your voice channel! Believe me, it's true.").catch(console.error);
 			});
 		} else {
