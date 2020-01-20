@@ -46,7 +46,7 @@ client.on("message", function(message) {
 		const utterance = message.content.slice(9).trim();
 		if (utterance) {
 			console.log("Playing " + utterance + "!");
-			const url = "http://api.jungle.horse/speak?v=trump&vol=3&s=" + encodeURIComponent(utterance);
+			const url = "http://api.trumped.com/speak?v=trump&vol=3&s=" + encodeURIComponent(utterance);
 			const connection = message.guild.voice && message.guild.voice.connection;
 			if (connection) {
 				connection.play(url);
