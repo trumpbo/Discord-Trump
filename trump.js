@@ -46,19 +46,32 @@ client.on("message", function(message) {
 		const utterance = message.content.slice(9).trim();
 		if (utterance) {
 			console.log("Playing " + utterance + "!");
-			const url = "http://api.trumped.com/speak?v=trump&vol=3&s=" + encodeURIComponent(utterance);
-			const connection = message.guild.voice && message.guild.voice.connection;
-			if (connection) {
-				connection.play(url);
-			} else {
-				const fileName = crypto.randomBytes(48).toString("hex") + ".wav";
-				request.get(url, function(error, response, body) {
-					if (error) {
-						console.error(error);
-						fs.unlinkSync(fileName);
-					} else if (response.statusCode !== 200) {
-						message.channel.send(body).catch(console.error);
-						fs.unlinkSync(fileName);
+			const fileName = crypto.randomBytes(48).toString("hex") + ".wav";
+			request.post({
+				url: "https://mumble.stream/speak",
+				headers: {
+					"Accept": "application/json",
+					"Content-Type": "application/json"
+				},
+				body: JSON.stringify({
+					speaker: "donald-trump",
+					text: utterance
+				}),
+			}, function(error, response, body) {
+				if (error) {
+					console.error(error);
+					fs.unlinkSync(fileName);
+				} else if (response.statusCode !== 200) {
+					message.channel.send(body).catch(console.error);
+					fs.unlinkSync(fileName);
+				} else {
+					const connection = message.guild.voice && message.guild.voice.connection;
+					if (connection) {
+						connection.play(fs.createReadStream(fileName)).on("speaking", function(speaking) {
+							if (!speaking) {
+								fs.unlinkSync(fileName);
+							}
+						}).on("error", console.error);
 					} else {
 						message.channel.send({
 							files: [{
@@ -69,8 +82,8 @@ client.on("message", function(message) {
 							fs.unlinkSync(fileName);
 						}).catch(console.error);
 					}
-				}).pipe(fs.createWriteStream(fileName));
-			}
+				}
+			}).pipe(fs.createWriteStream(fileName));
 		} else {
 			message.channel.send("Give me something to say!").catch(console.error);
 		}
