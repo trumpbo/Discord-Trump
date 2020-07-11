@@ -1,5 +1,5 @@
 # [Discord Trump](https://discordapp.com/oauth2/authorize?client_id=484622857041608705&scope=bot)
-Text to speech Discord bot using the Jungle Horse API.
+Text to speech Discord bot using [Trumped](https://trumped.com/).
 
 ## Commands
 ### Join
