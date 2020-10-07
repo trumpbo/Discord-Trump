@@ -31,4 +31,4 @@ Text to speech Discord bot using [Trumped](https://trumped.com/).
 7. [Run the bot](https://github.com/MysteryPancake/Discord-Trump/blob/master/trump.js): `npm start`
 8. You won't regret it, believe me!
 
-![Icon](trump.jpg?raw=true)
+<img src="trump.jpg?raw=true" width="256">
