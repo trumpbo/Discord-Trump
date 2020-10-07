@@ -1,3 +1,5 @@
+<img src="trump.jpg?raw=true" width="84" align="left">
+
 # [Discord Trump](https://discordapp.com/oauth2/authorize?client_id=484622857041608705&scope=bot)
 Text to speech Discord bot using [Trumped](https://trumped.com/).
 
@@ -30,5 +32,3 @@ Text to speech Discord bot using [Trumped](https://trumped.com/).
 6. [Install the dependencies](https://github.com/MysteryPancake/Discord-Trump/blob/master/package.json#L37-L40): `npm install`
 7. [Run the bot](https://github.com/MysteryPancake/Discord-Trump/blob/master/trump.js): `npm start`
 8. You won't regret it, believe me!
-
-<img src="trump.jpg?raw=true" width="256">
